@@ -376,8 +376,9 @@ public:
         }
     }
 
-    ~ArraySequence() {
-        this->MyArray->~DynamicArray();
+    virtual ~ArraySequence() {
+        delete this->MyArray;
+        this->MyArray = nullptr;
     }
 
     T GetFirst() override {
@@ -469,8 +470,9 @@ public:
             this->list->InsertAt(seq->Get(i), i);
     }
 
-    ~ListSequence() {
-        this->list->~LinkedList();
+    virtual ~ListSequence() {
+        delete this->list;
+        this->list = nullptr;
     }
 
     T GetFirst() override {
